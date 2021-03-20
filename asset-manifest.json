@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/todo-with-auth/static/css/main.712888f6.chunk.css",
+    "main.js": "/todo-with-auth/static/js/main.eb9b8893.chunk.js",
+    "main.js.map": "/todo-with-auth/static/js/main.eb9b8893.chunk.js.map",
+    "runtime-main.js": "/todo-with-auth/static/js/runtime-main.b4acea58.js",
+    "runtime-main.js.map": "/todo-with-auth/static/js/runtime-main.b4acea58.js.map",
+    "static/css/2.98e7ac70.chunk.css": "/todo-with-auth/static/css/2.98e7ac70.chunk.css",
+    "static/js/2.e89ac0f7.chunk.js": "/todo-with-auth/static/js/2.e89ac0f7.chunk.js",
+    "static/js/2.e89ac0f7.chunk.js.map": "/todo-with-auth/static/js/2.e89ac0f7.chunk.js.map",
+    "static/js/3.1f4af1e7.chunk.js": "/todo-with-auth/static/js/3.1f4af1e7.chunk.js",
+    "static/js/3.1f4af1e7.chunk.js.map": "/todo-with-auth/static/js/3.1f4af1e7.chunk.js.map",
+    "index.html": "/todo-with-auth/index.html",
+    "static/css/2.98e7ac70.chunk.css.map": "/todo-with-auth/static/css/2.98e7ac70.chunk.css.map",
+    "static/css/main.712888f6.chunk.css.map": "/todo-with-auth/static/css/main.712888f6.chunk.css.map",
+    "static/js/2.e89ac0f7.chunk.js.LICENSE.txt": "/todo-with-auth/static/js/2.e89ac0f7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b4acea58.js",
+    "static/css/2.98e7ac70.chunk.css",
+    "static/js/2.e89ac0f7.chunk.js",
+    "static/css/main.712888f6.chunk.css",
+    "static/js/main.eb9b8893.chunk.js"
+  ]
+}
