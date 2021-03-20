@@ -1,0 +1,27 @@
+.item-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    border-radius: .2rem;
+}
+
+.btn-success {
+    border-color: #28a745 ;
+    color: #28a745 ;
+}
+
+.btn-success:hover {
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745 ;
+}
+
+.ant-btn-dangerous:hover {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+    color: #fff;
+}

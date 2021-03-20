@@ -1,0 +1,14 @@
+.nav-header {
+    background-color: unset; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+.nav-header .avatar {
+    background-color: #f56a00; 
+}
+
+.nav-header .nav-text {
+    font-size: 18px;
+}
