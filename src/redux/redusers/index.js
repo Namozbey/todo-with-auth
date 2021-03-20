@@ -1,6 +1,8 @@
 export const Reduser = (state = [], action) => {
-    const { id, newItem, type } = action
+    const { id, newItem, type, data } = action
     switch(type) {
+        case "SET":
+            return data;
         case 'ADD':
             return [...state, newItem];
         case 'DELETE':

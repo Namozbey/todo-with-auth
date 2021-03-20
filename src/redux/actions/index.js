@@ -1,3 +1,10 @@
+export const setItem = (data = []) => {
+    return {
+        type: 'SET',
+        data
+    }
+}
+
 export const addItem = (newItem = {}) => {
     return {
         type: 'ADD',

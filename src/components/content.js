@@ -1,8 +1,9 @@
 import "../assets/style/content.css"
 import { connect } from 'react-redux'
 import { TodoList } from "./list"
-import { useState, useEffect } from "react"
-import { deleteItem, addItem, doneItem, markItem } from "../redux/actions/index"
+import { customFetch } from "../customFetch"
+import { useState, useEffect, useRef } from "react"
+import { deleteItem, addItem, doneItem, markItem, setItem } from "../redux/actions/index"
 import { 
     Col, 
     Row, 
@@ -12,24 +13,37 @@ import {
     Button, 
 } from 'antd';
 
-let cusId = 10
-
 const Content = (props) => {
-    const { data, deleteElm, addElm, doneElm, markElm } = props
+    const { data, deleteElm, addElm, doneElm, markElm, setElm } = props
     const [_data, setData] = useState(data)
-    const [title, setTitle] = useState("")
+    const [loadingAdd, setLoadingAdd] = useState(false)
     const [activeTab, setActiveTab] = useState("a")
     const [searchText, setSearchText] = useState("")
     const [activeAndDone, setActiveAndDone] = useState({active: 0, done: 0})
     const { Content } = Layout;
 
-    // Count active and done amount
+    const inputRef = useRef()
+
+    // Get items from database
+    useEffect(() => {
+        getItems()
+    }, [])
+
+    const getItems = () => {
+        customFetch('/')
+            .then(data => setElm(data))
+            .catch(err => console.log(err))
+    }
+
+    // Update
     useEffect(() => {
         CountActiveAndDone()
         setData(data)
         handleSearch(searchText)
     }, [data])
 
+    
+    // Count active and done amount
     const CountActiveAndDone = () => {
         let done = 0;
         for (let {isDone} of data) {
@@ -47,13 +61,14 @@ const Content = (props) => {
 
     // Add a new item
     const handleAddItem = () => {
-        if(title.trim().length) {
-            addElm({
-                _id: ++cusId,
-                title,
-                isMarked: false,
-                isDone: false,
-            })
+        if(inputRef.current.value.trim().length) {
+            setLoadingAdd(true)
+            customFetch('/add', {
+                method: "POST",
+                body: JSON.stringify({title: inputRef.current.value})
+            }).then(data => addElm(data))
+            .catch(err => alert(err))
+            .finally(() => setLoadingAdd(false))
         }
     }
 
@@ -117,15 +132,15 @@ const Content = (props) => {
                     <div className="adding-content">
                         <Input 
                             size="large" 
-                            // className="search-input"
+                            ref={inputRef}
                             placeholder="What needs to be done" 
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}
+                            onChange={e => {inputRef.current.value = e.target.value}}
                             onKeyPress={e => e.key === "Enter" && handleAddItem()}
                         />
                         <Button 
                             size="large"
                             className="add-btn"
+                            loading={loadingAdd}
                             onClick={handleAddItem}
                         >
                             Add Item
@@ -146,6 +161,7 @@ const stateToProps = state => {
 
 const manageItemToProps = dispatch => {
     return {
+        setElm: val => dispatch(setItem(val)),
         deleteElm: id => dispatch(deleteItem(id)),
         addElm: newItem => dispatch(addItem(newItem)),
         doneElm: id => dispatch(doneItem(id)),
